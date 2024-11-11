@@ -1,69 +1,117 @@
 :root {
-    font-family: "VT323", monospace;
-    font-weight: 400;
-    --primary-color: #ffd52c;
-    --secondary-color: #ff5c00;
-    --tertiary-color: #c72d04;
-    --background-color: #111;
-    scrollbar-color: var(--primary-color) var(--secondary-color);
-    font-size: clamp(18px, 3vw, 30px);
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  --primary-color: #33ff99;
+  --secondary-color: #278d5a;
+  --tertiary-color: #225f40;
+  --background-color: #1b2520;
+  scrollbar-color: var(--primary-color) var(--secondary-color);
+  font-size: clamp(18px, 3vw, 30px);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  /*Resets all margins and paddings to 0*/
+  margin: 0;
+  padding: 0;
+  /*Ensures padding and borders are included
+    in elements's total width and height*/
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: var(--background-color);
-    box-shadow: inset 0px 0px 2rem var(--primary-color);
-    background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
-    animation: crtAnimation 100s linear infinite;
-    background-size: 100% 80%;
-}
-div.retro-container {
-    width: 90vw;
-    height: 90vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    overflow: hidden;
-    padding: 0.5rem;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
-    mask-size: 100% 2px;
-    text-shadow: 0 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-color);
+  background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
+  animation: crtAnimation 100s linear infinite;
+  background-size: 100% 80%;
 }
 
-header,
-footer {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+div.retro-container {
+  width: 90vw;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  padding: 0.5rem;
+  border: 2px solid var(--tertiary-color);
+  color: var(--primary-color);
+  mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+  mask-size: 100% 2px;
+  text-shadow: 0 0 0.5rem;
 }
 
 main {
-    overflow: hidden;
+  overflow: hidden;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+nav {
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  
+}
+
+nav ul li {
+  list-style: none;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  justify-content: space-around;
+  transition: 0.5s;
+}
+
+nav ul li a {
+  transition: 0.5s;
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+nav ul li.active {
+  color:var(--background-color);
+  background-color: var(--secondary-color);
+}
+
+nav ul li.active a {
+  color: var(--background-color); /* Change <a> color when its <li> is active */
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: "Press Start 2P", system-ui;
 }
 
 section {
-    height: 100%;
-    overflow: hidden auto;
-    margin: 1rem 0;
+  height: 100%;
+  padding-top: 2%;
+  overflow: hidden auto;
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes crtAnimation {
-    0% {
-        background-position: 0 0;
-    }
+  0% {
+    background-position: 0 0;
+  }
 
-    100% {
-        background-position: 0 10000%;
-    }
+  100% {
+    background-position: 0 10000%;
+  }
 }
-
