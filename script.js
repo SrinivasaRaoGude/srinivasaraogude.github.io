@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   
         // Calculate the scroll position, adjusted by the padding of the target element
         main.scrollTo({
-          top: targetElement.offsetTop - main.offsetTop - targetPadding, // Adjust for padding
+          top: targetElement.offsetTop - main.offsetTop,
           behavior: "smooth",
         });
       }
@@ -33,4 +33,16 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       this.parentElement.classList.add('active');
     });
   });
+
+  var slices = 12,
+    angle = 360 / slices;
+
+for (var i = 0; i < slices; i++) {
+  var slice = $('<div></div>');  
+  slice.css('transform', 'rotateY(' + angle * i + 'deg)'); // Rotate each slice around the Y-axis
+  $('.sphere').append(slice); // Append the slice to the sphere
+}
+
+
+  
   

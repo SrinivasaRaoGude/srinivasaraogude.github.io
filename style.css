@@ -38,7 +38,7 @@ div.retro-container {
   padding: 0.5rem;
   border: 2px solid var(--tertiary-color);
   color: var(--primary-color);
-  mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+  mask-image: linear-gradient(to bottom, #0005 30%, #000 30%);
   mask-size: 100% 2px;
   text-shadow: 0 0 0.5rem;
 }
@@ -98,6 +98,7 @@ h4, h5, h6 {
 }
 
 section {
+  display: flex;
   height: 100%;
   padding-top: 2%;
   overflow: hidden auto;
@@ -106,6 +107,7 @@ section {
   justify-content: center;
 }
 
+
 @keyframes crtAnimation {
   0% {
     background-position: 0 0;
@@ -113,5 +115,65 @@ section {
 
   100% {
     background-position: 0 10000%;
+  }
+}
+
+/* Wrapper for the sphere to control the perspective */
+.wrapper {
+  margin: 50px;
+  perspective: 800px;
+  perspective-origin: 50% 100px;
+}
+
+/* The sphere itself */
+.sphere {
+  position: relative;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: spin 60s infinite linear; /* Animation for rotation */
+}
+
+/* Styling for the div elements inside the sphere */
+.sphere > div {
+  border: solid 5px var(--secondary-color) ;/* Green border */
+  border-radius: 50%;
+  height: 200px;
+  opacity: .8;
+  position: absolute;
+  width: 200px;
+}
+
+/* The equator of the sphere */
+div.equator {
+  transform: rotateX(90deg); /* Rotated 90deg around X axis */
+}
+
+/* Tropics (Cancer and Capricorn) */
+div.tropic {
+  height: 172px;
+  margin: 14px;
+  width: 172px;
+}
+
+div.cancer {
+  transform: translateY(-50px) rotateX(90deg); /* Tropic of Cancer */
+}
+
+div.capricorn {
+  transform: translateY(50px) rotateX(90deg); /* Tropic of Capricorn */
+}
+
+/* Keyframe animation for the 3D spin */
+@keyframes spin {
+  0% {
+    transform: rotateX(15deg) rotateY(0) rotateZ(15deg);
+  }
+  50% {
+    transform: rotateX(-15deg) rotateY(180deg) rotateZ(-15deg);
+  }
+  100% {
+    transform: rotateX(15deg) rotateY(360deg) rotateZ(15deg);
   }
 }
