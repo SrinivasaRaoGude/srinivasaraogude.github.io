@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100svh;
   background-color: var(--background-color);
   background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
   animation: crtAnimation 100s linear infinite;
@@ -30,12 +30,12 @@ body {
 }
 
 div.retro-container {
-  width: 90vw;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
-  padding: 0.5rem;
+  padding: 1%;
   border: 2px solid var(--tertiary-color);
   color: var(--primary-color);
   mask-image: linear-gradient(to bottom, #0005 30%, #000 30%);
@@ -53,13 +53,13 @@ a {
 }
 
 nav {
-  left: 0;
-  top: 0;
+  display: block;
+  left  : 0;
+  top : 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
 }
 
 nav ul {
@@ -92,21 +92,49 @@ nav ul li.active a {
   color: var(--background-color); /* Change <a> color when its <li> is active */
 }
 
-h1, h2, h3,
-h4, h5, h6 {
+h1 {
   font-family: "Press Start 2P", system-ui;
+}
+
+h2{
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1rem;
+}
+
+p{
+  margin-top: 2%;
 }
 
 section {
   display: flex;
-  height: 100%;
-  padding-top: 2%;
+  height: 90vh;
   overflow: hidden auto;
-  margin: 1rem 0;
   align-items: center;
   justify-content: center;
 }
 
+div.info{
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.social-media{
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: repeat(3, 1.5em);
+}
+
+svg{
+  fill: var(--secondary-color);
+  transition: 0.5s;
+}
+
+svg:hover{
+  fill:var(--primary-color);
+}
 
 @keyframes crtAnimation {
   0% {
@@ -137,6 +165,7 @@ section {
 
 
 #canvas {
+  display: inline-block;
   width: 40vw;
   height: 40vw;
 }
