@@ -118,26 +118,32 @@ section {
   }
 }
 
-/* Wrapper for the sphere to control the perspective */
+/* Wrapper for the sphere to control the perspective 
 .wrapper {
   margin: 50px;
   perspective: 800px;
   perspective-origin: 50% 100px;
-}
+}*/
 
-/* The sphere itself */
+/* The sphere itself 
 .sphere {
   position: relative;
   margin: 0 auto;
   width: 200px;
   height: 200px;
   transform-style: preserve-3d;
-  animation: spin 60s infinite linear; /* Animation for rotation */
+  animation: spin 60s infinite linear; /* Animation for rotation 
+}*/
+
+
+#canvas {
+  width: 40vw;
+  height: 40vw;
 }
 
-/* Styling for the div elements inside the sphere */
+/* Styling for the div elements inside the sphere
 .sphere > div {
-  border: solid 5px var(--secondary-color) ;/* Green border */
+  border: solid 5px var(--secondary-color) ;/* Green border
   border-radius: 50%;
   height: 200px;
   opacity: .8;
@@ -145,12 +151,12 @@ section {
   width: 200px;
 }
 
-/* The equator of the sphere */
+/* The equator of the sphere 
 div.equator {
-  transform: rotateX(90deg); /* Rotated 90deg around X axis */
+  transform: rotateX(90deg); /* Rotated 90deg around X axis 
 }
 
-/* Tropics (Cancer and Capricorn) */
+/* Tropics (Cancer and Capricorn) 
 div.tropic {
   height: 172px;
   margin: 14px;
@@ -158,12 +164,12 @@ div.tropic {
 }
 
 div.cancer {
-  transform: translateY(-50px) rotateX(90deg); /* Tropic of Cancer */
+  transform: translateY(-50px) rotateX(90deg); /* Tropic of Cancer 
 }
 
 div.capricorn {
-  transform: translateY(50px) rotateX(90deg); /* Tropic of Capricorn */
-}
+  transform: translateY(50px) rotateX(90deg); /* Tropic of Capricorn 
+}*/
 
 /* Keyframe animation for the 3D spin */
 @keyframes spin {
