@@ -1,3 +1,4 @@
+//Smooth Scroll Effect
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -21,7 +22,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
-
+//nav-bar active effect
 document.querySelectorAll("nav ul li a").forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault(); // Prevent default anchor click behavior (e.g., page jump)
@@ -36,20 +37,7 @@ document.querySelectorAll("nav ul li a").forEach((anchor) => {
   });
 });
 
-
-
-
-//Sphere Animation 
-//var slices = 12,
- // angle = 360 / slices;
-
-//for (var i = 0; i < slices; i++) {
-  //var slice = $("<div></div>");
-  //slice.css("transform", "rotateY(" + angle * i + "deg)"); // Rotate each slice around the Y-axis
-  //$(".sphere").append(slice); // Append the slice to the sphere
-//}
-
-
+//Animation - Sphere Spin
 // Get the container element where you want the canvas to be rendered
 var container = document.getElementById('canvas');
 

@@ -1,21 +1,21 @@
 :root {
-  font-family: "VT323", monospace;
-  font-weight: 400;
-  --primary-color: #33ff99;
-  --secondary-color: #278d5a;
-  --tertiary-color: #225f40;
+  font-family       : "VT323", monospace;
+  font-weight       : 400;
+  --primary-color   : #33ff99;
+  --secondary-color : #278d5a;
+  --tertiary-color  : #225f40;
   --background-color: #1b2520;
-  scrollbar-color: var(--primary-color) var(--secondary-color);
-  font-size: clamp(18px, 3vw, 30px);
+  scrollbar-color   : var(--primary-color) var(--secondary-color);
+  font-size         : clamp(18px, 3vw, 30px);
 }
 
 * {
   /*Resets all margins and paddings to 0*/
-  margin: 0;
-  padding: 0;
+  margin  : 0;
+  padding : 0;
   /*Ensures padding and borders are included
     in elements's total width and height*/
-  box-sizing: border-box;
+  box-sizing  : border-box;
 }
 
 body {
@@ -30,14 +30,14 @@ body {
 }
 
 div.retro-container {
-  width: 90%;
-  height: 90%;
-  display: grid;
+  width   : 90%;
+  height  : 90%;
+  display : grid;
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
-  padding: 1%;
-  border: 2px solid var(--tertiary-color);
-  color: var(--primary-color);
+  padding : 1%;
+  border  : 2px solid var(--tertiary-color);
+  color   : var(--primary-color);
   mask-image: linear-gradient(to bottom, #0005 30%, #000 30%);
   mask-size: 100% 2px;
   text-shadow: 0 0 0.5rem;
@@ -93,12 +93,12 @@ nav ul li.active a {
 }
 
 h1 {
-  font-family: "Press Start 2P", system-ui;
+  font-family : "Press Start 2P", system-ui;
+  font-size   : clamp(1em, 3vw, 2em);
 }
 
 h2{
   font-family: "Press Start 2P", system-ui;
-  font-size: 1rem;
 }
 
 p{
@@ -106,34 +106,52 @@ p{
 }
 
 section {
-  display: flex;
-  height: 90vh;
+  height  : 81svh;
   overflow: hidden auto;
-  align-items: center;
-  justify-content: center;
+
+  display         : flex;
+  flex-direction  : row-reverse;
+  align-items     : center;
+  justify-content : center;
+
 }
 
 div.info{
-  height: 100%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height  : 100%;
+  width   : 70%;
+  
+  order: 0;
+
+  display : flex;
+  flex-direction  : column;
+  justify-content : center;
 }
 
+div.decorative{
+  height  : 100%;
+  width   : 30%;
+
+  order: 1;
+
+  display : flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 div.social-media{
-  margin-top: 2%;
-  display: grid;
+  margin-top  : 2%;
+  display     : grid;
   grid-template-columns: repeat(3, 1.5em);
 }
 
-svg{
-  fill: var(--secondary-color);
-  transition: 0.5s;
+.icons{
+  fill        : var(--secondary-color);
+  transition  : 0.5s;
 }
 
-svg:hover{
-  fill:var(--primary-color);
+.icons:hover{
+  fill  : var(--primary-color);
 }
 
 @keyframes crtAnimation {
@@ -165,9 +183,8 @@ svg:hover{
 
 
 #canvas {
-  display: inline-block;
-  width: 40vw;
-  height: 40vw;
+  width: 30vw;
+  height: 75%;
 }
 
 /* Styling for the div elements inside the sphere
@@ -210,5 +227,21 @@ div.capricorn {
   }
   100% {
     transform: rotateX(15deg) rotateY(360deg) rotateZ(15deg);
+  }
+}
+
+@media (width < 769px) {
+  section{
+    flex-direction: column;
+  }
+  
+  .decorative{
+    width : 100%;
+    height: 20svh;
+  }
+
+  .info{
+    width: 100%;
+    height: 80svh;
   }
 }
