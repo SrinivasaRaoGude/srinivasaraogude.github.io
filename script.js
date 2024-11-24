@@ -101,6 +101,8 @@ window.addEventListener('resize', function() {
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
 });
+
+
 function downloadFile() {
   const link = document.createElement('a');
   link.href = '/assets/photo.jpg';  // Replace with your file path
