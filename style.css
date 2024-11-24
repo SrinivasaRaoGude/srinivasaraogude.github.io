@@ -1,247 +1,303 @@
 :root {
-  font-family       : "VT323", monospace;
-  font-weight       : 400;
-  --primary-color   : #33ff99;
-  --secondary-color : #278d5a;
-  --tertiary-color  : #225f40;
-  --background-color: #1b2520;
-  scrollbar-color   : var(--primary-color) var(--secondary-color);
-  font-size         : clamp(18px, 3vw, 30px);
+  /* Sets up default font */
+  font-family : "VT323", monospace;
+  font-weight : 400;
+  
+  font-size   : clamp(18px, 3vw, 30px);
+  
+  /*variable colors*/
+  --primary-color    : #33ff99;
+  --secondary-color  : #278d5a;
+  --tertiary-color   : #225f40;
+  --background-color : #1b2520;
+  
+  /*scroll bar customize*/
+  scrollbar-color: var(--primary-color) var(--secondary-color);
 }
 
 * {
   /*Resets all margins and paddings to 0*/
-  margin  : 0;
-  padding : 0;
-  /*Ensures padding and borders are included
-    in elements's total width and height*/
-  box-sizing  : border-box;
+  margin    : 0;
+  padding   : 0;
+  /*Ensuring padding and borders are included
+    in elements's total width and height */
+  box-sizing : border-box;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100svh;
-  background-color: var(--background-color);
-  background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
-  animation: crtAnimation 100s linear infinite;
-  background-size: 100% 80%;
+  height  : 100svh; /* Setting height = screen height */
+
+  /*Centering <body> content using gird flow*/
+  display     : grid;
+  place-items : center;
+    
+  /*For CRT Effect*/
+  background-color : var(--background-color);
+  background-image : linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
+  animation        : crtAnimation 100s linear infinite;
+  background-size  : 100% 80%;
 }
 
-div.retro-container {
-  width   : 90%;
-  height  : 90%;
-  display : grid;
-  grid-template-rows: auto 1fr auto;
-  overflow: hidden;
-  padding : 1%;
-  border  : 2px solid var(--tertiary-color);
-  color   : var(--primary-color);
-  mask-image: linear-gradient(to bottom, #0005 30%, #000 30%);
-  mask-size: 100% 2px;
-  text-shadow: 0 0 0.5rem;
+@keyframes crtAnimation {   /* To be used for <body>*/
+  0%   { background-position : 0 0; }
+  100% { background-position : 0 10000%; }
 }
 
-main {
-  overflow: hidden;
+/* Button Effects*/
+button{
+  font-family : "VT323", monospace;
+  background  : none;
+  padding     : 1%;
+  border      : 2px solid var(--tertiary-color);
+  font-size   : clamp(18px, 100%, 30px);
+  color       : var(--secondary-color);
+  transition  : background-color 0.3s ease, color 0.3s ease;
 }
-
-a {
-  color: var(--secondary-color);
-  text-decoration: none;
-}
-
-nav {
-  display: block;
-  left  : 0;
-  top : 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul {
-  display: flex;
-  
-}
-
-nav ul li {
-  list-style: none;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  justify-content: space-around;
-  transition: 0.5s;
-}
-
-nav ul li a {
-  transition: 0.5s;
-}
-
-nav ul li a:hover {
+button:hover{
+  background-color: var(--tertiary-color);
   color: var(--primary-color);
 }
 
-nav ul li.active {
-  color:var(--background-color);
-  background-color: var(--secondary-color);
+div.retro-container {
+    width   : 95%;  /* Sets width  to 95% width  of <body> parent container*/
+    height  : 95%;  /* Sets height to 95% height of <body> parent container*/
+    padding : 1%;
+    display: grid; /* Implicit Gird */
+
+    /* For CRT Effect */
+    border      : 2px solid var(--tertiary-color);
+    color       : var(--primary-color);
+    mask-image  : linear-gradient(to bottom, #0005 30%, #000 30%);
+    mask-size   : 100% 2px;
+
+    /*Clips Overflow content*/
+    overflow : hidden;
 }
 
-nav ul li.active a {
-  color: var(--background-color); /* Change <a> color when its <li> is active */
-}
-
-h1 {
-  font-family : "Press Start 2P", system-ui;
-  font-size   : clamp(1em, 3vw, 2em);
-}
-
-h2{
+h1, p{ text-shadow: 0 0 0.5rem var(--secondary-color); }
+h1{ 
   font-family: "Press Start 2P", system-ui;
+  margin: 1%;
 }
 
-p{
-  margin-top: 2%;
+header{
+  display : block;
+  height  : 5%;
+  width   : 100%;
+}
+nav{height: 100%;} /* 5% height of div.retro-container */
+
+nav ul {
+  display : flex; /* Use flexbox for horizontal layout */
+  width   : 100%; /* Use 100% <nav> width              */
+  gap     : 1%;   /* Adds 1% of <nav> width as gap     */
+
+  list-style-type : none;     /* Remove bullet points  */
+  justify-content : flex-end; /* Groups items to end   */
 }
 
-section {
-  height  : 81svh;
-  overflow: hidden auto;
+#nav-logo{ margin-right: auto; /*Add max. space available to right and pushes other elements to right side*/ }
 
-  display         : flex;
-  flex-direction  : row-reverse;
-  align-items     : center;
+nav ul li{
+  padding-left  : 1%; /* Adds 1% of <ul> width to left and increases total width */
+  padding-right : 1%; /* Adds 1% of <ul> width to left and increases total width */
+  font-size   : clamp(18px, 100%, 30px);
+}
+
+nav ul li a {
+  color: var(--tertiary-color); /* Sets font color                    */
+  text-decoration: none;        /* Remove underline from links        */
+  transition: color 0.3s ease;  /* Smooth transition for color change */
+}
+
+nav ul li a:hover { color: var(--primary-color); }             /* When hover, changes <a>'s font-color           */
+/*Active Effect For <nav> Items*/
+nav ul li.active  { background-color: var(--secondary-color);} /* Adds Color to background for <li class=active> */ 
+nav ul li.active a,
+nav ul li.active a:hover { color: var(--background-color); }   /* Changes font color and keeps same when hover   */ 
+
+
+main{
+  height   : 95%;  /* 95% height of div.retro-container */
+  display  : grid; 
+
+  /* 3 x 2 Grid */
+  grid-template-columns : 100%; 
+  grid-template-rows    : 100% 100% 100%; /* Each Row Height = <main> height */
+  grid-template-areas   : 'R1' 'R2' 'R3'; 
+  overflow-y      : hidden; 
+  scroll-behavior : smooth; 
+}
+
+/* Sets Rows to <section> of <main> */
+section#home     { grid-area : R1;}
+section#about    { grid-area : R2;}
+section#projects { grid-area : R3;}
+
+section { 
+  display       : grid;  /* Creates girds inside section */
+  grid-template-columns : 30% 70%;
+  overflow      : hidden;
+}
+
+/*row-start / column-start / row-end / column-end;*/
+section div{ display : grid;}
+
+section div.decorative { 
+  grid-area     : 1 / 1 / 2 / 2;
+  place-items   : center;
+}
+section div.info {
+  grid-area     : 1 / 2 / 2 / 3;
+  place-content : center;
+}
+
+/* Styling Each Row*/
+
+/* 1st Row, section#home */
+
+/*div.decorative*/
+#canvas { /*For Shpere Animation*/
+  width        : 90%;
+  aspect-ratio : 1/1; /* Ensure Aspect Ratio */
+}
+/* div.info */
+#social-media{
+  margin-top : 1%;
+  display    : grid; /*Using Gird for placement (1x4)*/
+  gap        : 1%;
+  grid-template-columns : 15% 5% 5% 5%;
+}
+/* Logo Effects */
+#social-media svg{
+  height : 100%; 
+  width  : 100%; 
+  fill       : var(--secondary-color);
+  transition : fill 0.3s ease;
+}
+#social-media svg:hover{ fill: var(--primary-color); }
+/* 1st Row - Ends         */
+
+/* 2nd Row, section#about */
+section#about div.decorative { /* 1x1 Gird*/
+  grid-template-columns : 1fr; 
+  grid-template-rows    : 0.7fr auto;
+  align-content   : space-evenly;
   justify-content : center;
-
+  justify-items   : center;
+}
+/* Photo */
+#about div.decorative img{
+  max-width    : 90%;
+  aspect-ratio : 3/4;
+  padding      : 3%;
+  object-fit   : contain;
+}
+/* Border Moving Animation*/
+.box {
+  background-image:
+    repeating-linear-gradient(0deg,   #278d5a, #278d5a 10px, transparent 10px, transparent 22px, #278d5a 22px), 
+    repeating-linear-gradient(90deg,  #278d5a, #278d5a 10px, transparent 10px, transparent 22px, #278d5a 22px), 
+    repeating-linear-gradient(180deg, #278d5a, #278d5a 10px, transparent 10px, transparent 22px, #278d5a 22px), 
+    repeating-linear-gradient(270deg, #278d5a, #278d5a 10px, transparent 10px, transparent 22px, #278d5a 22px);
+  
+  background-size:
+    3px calc(100% + 22px), 
+    calc(100% + 22px) 3px, 
+    3px calc(100% + 22px), 
+    calc(100% + 22px) 3px;
+    
+  background-position : 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat   : no-repeat;
+  animation : borderAnimation 1s infinite linear;
 }
 
-div.info{
-  height  : 100%;
-  width   : 70%;
-  
-  order: 0;
+@keyframes borderAnimation {
+  from { background-position : 0 0, -22px 0, 100% -22px, 0 100%; }
+  to   { background-position : 0 -22px, 0 0, 100% 0, -22px 100%; }
+}
+/* Photo - End*/
 
-  display : flex;
-  flex-direction  : column;
+/*#about div.info*/
+/* Table - Start*/
+table{
+  min-width  : 90%;
+  border     : var(--tertiary-color) 2px solid;
+  border-top : none;
+  
+  border-collapse  : collapse;
+  margin-bottom    : 1%;  
+}
+
+caption{
+  background-color : var(--secondary-color); 
+  color            : var(--background-color)
+}
+
+td, th{
+  border-left : var(--tertiary-color) 3px solid;
+  padding     : 5px;
+  margin      : 3px;
+}
+
+td{ text-shadow : 0 0 0.5rem var(--tertiary-color);}
+thead tr{
+  color         : var(--secondary-color);
+  text-align    : center;
+  border-bottom : var(--tertiary-color) 3px solid;
+}
+tbody tr       {       transition : background-color 0.3s ease, color 0.3s ease; }
+tbody tr:hover { background-color : var(--tertiary-color); }
+#tech-skills tr td:nth-child(1), #other-info tr td:nth-child(1){ width : 30%;}
+/* Table- END*/
+
+/* 3rd ROW*/
+section#projects div.info{
+  grid-area: 1/1/2/3;
+  text-align: center;
+  row-gap: 5%;
+}
+.warning-content{place-items: center;}
+.warning-content svg{
+  stroke : var(--primary-color);
+  fill   : none;  
+  width  : 25%;
+  aspect-ratio: 10/7;
+}
+
+/* For Phone Screen */
+@media (width < 568px) {
+ section{
+  grid-template-rows    : 70%, 30%;
+  grid-template-columns : 100%;
+ }
+
+ section div.info{
+  grid-area       : 1/1/2/2;
   justify-content : center;
-}
+ }
 
-div.decorative{
-  height  : 100%;
-  width   : 30%;
-
-  order: 1;
-
-  display : flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-div.social-media{
-  margin-top  : 2%;
-  display     : grid;
-  grid-template-columns: repeat(3, 1.5em);
-}
-
-.icons{
-  fill        : var(--secondary-color);
-  transition  : 0.5s;
-}
-
-.icons:hover{
-  fill  : var(--primary-color);
-}
-
-@keyframes crtAnimation {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 0 10000%;
-  }
-}
-
-/* Wrapper for the sphere to control the perspective 
-.wrapper {
-  margin: 50px;
-  perspective: 800px;
-  perspective-origin: 50% 100px;
-}*/
-
-/* The sphere itself 
-.sphere {
-  position: relative;
-  margin: 0 auto;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  animation: spin 60s infinite linear; /* Animation for rotation 
-}*/
-
-
-#canvas {
-  width: 30vw;
-  height: 75%;
-}
-
-/* Styling for the div elements inside the sphere
-.sphere > div {
-  border: solid 5px var(--secondary-color) ;/* Green border
-  border-radius: 50%;
-  height: 200px;
-  opacity: .8;
-  position: absolute;
-  width: 200px;
-}
-
-/* The equator of the sphere 
-div.equator {
-  transform: rotateX(90deg); /* Rotated 90deg around X axis 
-}
-
-/* Tropics (Cancer and Capricorn) 
-div.tropic {
-  height: 172px;
-  margin: 14px;
-  width: 172px;
-}
-
-div.cancer {
-  transform: translateY(-50px) rotateX(90deg); /* Tropic of Cancer 
-}
-
-div.capricorn {
-  transform: translateY(50px) rotateX(90deg); /* Tropic of Capricorn 
-}*/
-
-/* Keyframe animation for the 3D spin */
-@keyframes spin {
-  0% {
-    transform: rotateX(15deg) rotateY(0) rotateZ(15deg);
-  }
-  50% {
-    transform: rotateX(-15deg) rotateY(180deg) rotateZ(-15deg);
-  }
-  100% {
-    transform: rotateX(15deg) rotateY(360deg) rotateZ(15deg);
-  }
-}
-
-@media (width < 769px) {
-  section{
-    flex-direction: column;
-  }
+ section  div.decorative { grid-area  : 2/1/3/2;}
+ 
+ /* Section#home*/
+ section#home div.info p, h1 { margin : 2%;}
   
-  .decorative{
-    width : 100%;
-    height: 20svh;
-  }
+ #canvas{
+  width        : 60%;
+  max-height   : 90%;
+  aspect-ratio : 1/1;
+ }
+ #social-media{ justify-content : center;}
+ 
+  /*Section#about*/
+ section#about{ grid-template-rows: 100%;}
+ 
+ section#about div.info       { overflow-y : auto;}
+ section#about div.info table#personal-data { display : none;}
 
-  .info{
-    width: 100%;
-    height: 80svh;
-  }
+ section#about div.decorative { display    : none;}
+ 
 }
+
+
+
