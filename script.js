@@ -105,8 +105,8 @@ window.addEventListener('resize', function() {
 
 function downloadFile() {
   const link = document.createElement('a');
-  link.href = '/assets/photo.jpg';  // Replace with your file path
-  link.download = 'photo.jpg';  // Replace with the desired download file name
+  link.href = '/assets/resume.pdf';  // Replace with your file path
+  link.download = 'resume-srinivas';  // Replace with the desired download file name
   link.click();
 }
 
